@@ -18,8 +18,13 @@ class CreateParticipantsTable extends Migration
             $table->string("nom");
             $table->string("prenom");
             $table->integer("telephone");
-            
+            $table->unsignedBigInteger('user_id');
             $table->timestamps();
+
+            $table->foreign('user_id')
+            ->references('id')
+            ->on('users')
+            ->onDelete('cascade');
         });
     }
 
