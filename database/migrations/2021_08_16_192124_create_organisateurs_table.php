@@ -19,7 +19,13 @@ class CreateOrganisateursTable extends Migration
             $table->string("prenom");
             $table->string("adresse");
             $table->integer("contact");
+            $table->unsignedBigInteger('user_id');
             $table->timestamps();
+
+            $table->foreign('user_id')
+            ->references('id')
+            ->on('users')
+            ->onDelete('cascade');
         });
     }
 
